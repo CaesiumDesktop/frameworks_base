@@ -63,7 +63,7 @@ public abstract class VerityUtils {
     public static void setUpFsverity(@NonNull String filePath) throws IOException {
         int errno = enableFsverityNative(filePath);
         if (errno != 0) {
-            throw new IOException("Failed to enable fs-verity on " + filePath + ": "
+            Slog.e(TAG, "Failed to enable fs-verity on " + filePath + ": "
                     + Os.strerror(errno));
         }
     }
@@ -72,7 +72,7 @@ public abstract class VerityUtils {
     public static void setUpFsverity(int fd) throws IOException {
         int errno = enableFsverityForFdNative(fd);
         if (errno != 0) {
-            throw new IOException("Failed to enable fs-verity on FD(" + fd + "): "
+            Slog.e(TAG, "Failed to enable fs-verity on FD(" + fd + "): "
                     + Os.strerror(errno));
         }
     }
